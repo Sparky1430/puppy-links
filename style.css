@@ -1,0 +1,285 @@
+/* =========================
+   Variables
+========================= */
+:root {
+  --bg: #f4f6fb;
+  --accent: #5b8cff;
+  --accent-hover: #4a7cff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --radius: 22px;
+}
+
+/* =========================
+   Reset & Base
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(to bottom, #f4f6fb, #eef2ff);
+  color: var(--text);
+}
+
+/* =========================
+   Header
+========================= */
+header {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem;
+  background: radial-gradient(
+    circle at top,
+    rgba(91, 140, 255, 0.18),
+    transparent 65%
+  );
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   Price Legend
+========================= */
+.price-legend {
+  position: sticky;
+  top: 0.6rem;
+  z-index: 10;
+  margin: 0 auto 1.2rem;
+  max-width: 1400px;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+}
+
+.price-legend strong {
+  color: var(--text);
+}
+
+/* =========================
+   Price Filters
+========================= */
+.price-filters {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0 1.5rem 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.price-filter {
+  border: none;
+  background: #e5e7eb;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.price-filter:hover {
+  background: #dbe1ff;
+}
+
+.price-filter.active {
+  background: #f59e0b;
+  color: white;
+}
+
+/* =========================
+   Grid
+========================= */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+}
+
+/* =========================
+   Card (BLOCS COLORÉS)
+========================= */
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.75)
+  );
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--price-color),
+    transparent 65%
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 30px 75px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   Price Color Mapping
+========================= */
+.card[data-price="$"] {
+  --price-color: rgba(34, 197, 94, 0.35);
+}
+
+.card[data-price="$$"] {
+  --price-color: rgba(245, 158, 11, 0.35);
+}
+
+.card[data-price="$$$"] {
+  --price-color: rgba(236, 72, 153, 0.35);
+}
+
+/* =========================
+   Card Header
+========================= */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-header img {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.category {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* =========================
+   Price Badge
+========================= */
+.price {
+  align-self: flex-start;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================
+   Button (soft)
+========================= */
+.card a {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(91, 140, 255, 0.18);
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.card a:hover {
+  background: rgba(91, 140, 255, 0.28);
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* =========================
+   Mobile – sensation app
+========================= */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.9rem;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.1rem;
+  }
+
+  .card {
+    padding: 1.1rem;
+    border-radius: 26px;
+  }
+
+  .card-header img {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .card-header h3 {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 0.75rem;
+  }
+
+  .card a {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.9rem;
+  }
+}
